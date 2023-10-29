@@ -18,9 +18,10 @@ h1{
 }
 .half-width img{
     
-    width: 75%;
-    height: 75%;
+    width: 80%;
+    /*height: 75%;*/
     margin-left: 20%;
+    margin-top: 7%;
 }
 .top-banner{
     background-image: url("image/top-banner.png");
