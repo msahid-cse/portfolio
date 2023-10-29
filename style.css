@@ -73,3 +73,14 @@ section{
 .footer-text{
     text-align: center;
 }
+
+.expe{
+    text-align: center;
+    background-color: bisque;
+    box-shadow: 10px 10px 20px gray;
+    font-weight: bold;
+    font-size: xx-large;
+    margin-bottom: 40px;
+    padding: 10px 10px;
+    border-radius: 100px;
+}
