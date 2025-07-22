@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Md. Sahid - Personal Portfolio</title>
+     <link rel="icon" type="image/x-icon" href="FAV.png">
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+      }
+    </script>
+
+    <!-- Custom Styles & Initial Dark Mode Check -->
+    <style type="text/tailwindcss">
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Style for section headers */
+        h2 {
+            @apply text-3xl font-bold mb-6 text-center pb-3 border-b;
+        }
+        /* Highlight style for results like GPA/CGPA */
+        .highlight-result {
+            @apply bg-green-100 text-green-800 px-2 py-1 rounded-md font-semibold;
+        }
+        .dark .highlight-result {
+            @apply bg-green-900 text-green-200;
+        }
+        /* Highlight style for clickable links */
+        a.highlight-link {
+            @apply font-medium underline text-blue-600 dark:text-blue-400;
+            text-decoration-color: #93c5fd; /* blue-300 */
+        }
+        .dark a.highlight-link {
+            text-decoration-color: #3b82f6; /* blue-500 */
+        }
+    </style>
+
+    <script>
+        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark')
+        } else {
+          document.documentElement.classList.remove('dark')
+        }
+    </script>
+</head>
+<body class="bg-slate-50 dark:bg-gray-900 text-slate-800 dark:text-slate-200 transition-colors duration-300">
+
+    <!-- Theme Toggle Button -->
+    <div class="fixed top-4 right-4 z-50">
+        <button id="theme-toggle" type="button" class="text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 focus:outline-none focus:ring-4 focus:ring-slate-200 dark:focus:ring-slate-700 rounded-lg text-sm p-2.5">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.121-3.536a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM10 16a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM3.05 4.54a1 1 0 00-1.414 1.414l.707.707a1 1 0 001.414-1.414l-.707-.707zM4.95 14.54a1 1 0 010-1.414l-.707-.707a1 1 0 01-1.414 1.414l.707.707a1 1 0 011.414 0zm12.728 0l.707-.707a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414zM4 10a1 1 0 11-2 0v-1a1 1 0 112 0v1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+        </button>
+    </div>
+
+    <!-- Main Container -->
+    <main class="container mx-auto max-w-4xl p-4 sm:p-6 md:p-8">
+
+        <!-- Header Section -->
+        <header class="text-center my-8">
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">MD. SAHID</h1>
+        </header>
+
+        <!-- Main Content Wrapper -->
+        <div class="space-y-12">
+
+            <!-- Introduction Section -->
+            <section id="about" class="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md">
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
+                    <!-- Profile Picture -->
+                    <div class="flex-shrink-0">
+                        <img src="SAHID.png" alt="Your Name" class="rounded-full w-36 h-36 object-cover border-4 border-slate-200 dark:border-slate-700">
+                    </div>
+                    <!-- Bio -->
+                    <div class="text-center md:text-left">
+                        <p class="mb-4">
+                            I am an undergraduate student in Computer Science and Engineering at Green University of Bangladesh, Dhaka, with a strong foundation in programming languages such as Java, C, and Python.
+                        </p>
+                        <p class="mb-4">
+                            Currently, my focus is on Data Science and Machine Learning, where I am expanding my expertise
+                            in Python, data analysis, statistical modeling, and machine learning algorithms. I am passionate about using data-driven insights to solve complex problems and am eager to apply my skills to real-world challenges. With a commitment to continuous learning and adaptability, I aim to make a meaningful impact in the field of data science and machine learning, contributing to innovative projects and advancements in technology.
+                        </p>
+                        <p class="mb-4">
+                            For inquiries, email me at: <a href="mailto:msahid.cse@gmail.com" class="font-medium text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300">msahid.cse@gmail.com</a>
+                        </p>
+                        <p>
+                            Connect with me on:
+                            <a href="https://www.linkedin.com/in/msahid-cse/" target="_blank" class="highlight-link">LinkedIn</a>,
+                            <a href="https://github.com/msahid-cse" target="_blank" class="highlight-link">GitHub</a>,
+                            <a href="https://www.kaggle.com/msahid" target="_blank" class="highlight-link">Kaggle</a>,
+                            <a href="https://drive.google.com/file/d/1zDYV4yPay-6tTFEDuN6APeX_VshoA7fC/view?usp=sharing" target="_blank" class="highlight-link">Curriculum Vitae (CV)</a>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- News & Updates Section -->
+            <section id="news" class="bg-blue-100 dark:bg-blue-900/50 border-l-4 border-blue-500 text-blue-800 dark:text-blue-200 p-6 rounded-lg shadow-sm">
+                <h3 class="text-xl font-semibold mb-3 text-blue-900 dark:text-blue-100">📰 News & Updates</h3>
+                <ul class="list-disc list-inside space-y-2">
+                    <li>I'm looking for active collaborators on my current research projects.</li>
+                </ul>
+            </section>
+
+            <!-- Professional Experience Section -->
+            <!-- <section id="experience" class="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md">
+                <h2 class="border-b-slate-200 dark:border-b-slate-700 text-slate-900 dark:text-white">PROFESSIONAL EXPERIENCE</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Current Role</h3>
+                        <p class="text-md font-medium text-slate-600 dark:text-slate-400">--</p>
+                        <p class="mt-2">- <strong class="font-semibold text-slate-800 dark:text-slate-200">-</strong> -</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Work History</h3>
+                        <p class="text-md font-medium text-slate-600 dark:text-slate-400">--</p>
+                        <p class="mt-2">-<strong class="font-semibold text-slate-800 dark:text-slate-200">-</strong>-<strong class="font-semibold text-slate-800 dark:text-slate-200">-</strong>-</p>
+                    </div>
+                </div>
+            </section> -->
+
+            <!-- Education Section -->
+            <section id="education" class="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md">
+                <h2 class="border-b-slate-200 dark:border-b-slate-700 text-slate-900 dark:text-white">EDUCATION</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Bachelor of Science(B.Sc) in Computer Science and Engineering(CSE)</h3>
+                        <p class="text-md font-medium text-slate-600 dark:text-slate-400">Green University of Bangladesh, Dhaka. | Feb 2022 - Feb 2026 (on-going)</p>
+                        <p class="mt-2">Achieved a CGPA of <span class="highlight-result">3.33/4.00</span> while actively participating as a General member of the Computer Club(GUCC), GUB. This period of transformation was profoundly influenced by the guidance and mentorship of <a href="https://scholar.google.com/citations?user=Vh4qvB4AAAAJ&hl=en" target="_blank" class="highlight-link">Md. Solaiman Mia</a>, for whom I am immensely grateful.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Higher Secondary Certificate(HSC) in Science</h3>
+                        <p class="text-md font-medium text-slate-600 dark:text-slate-400">Faridganj Govt. Degree College, Faridganj, Chandpur. | Passing Year: 2020</p>
+                        <!-- <p class="mt-2">Finished with a perfect GPA of <span class="highlight-result">5.00/5.00</span>, earning a General Grade Government Scholarship for academic excellence.</p> -->
+                    </div>
+                     <div>
+                        <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Secondary School Certificate (SSC) in Science</h3>
+                        <p class="text-md font-medium text-slate-600 dark:text-slate-400">Paikpara U. G. High School, Faridganj, Chandpur. | Passing Year: 2018</p>
+                        <!-- <p class="mt-2">Completed secondary education with a perfect GPA of <span class="highlight-result">5.00/5.00</span>.</p> -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Research Section -->
+            <section id="research" class="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md">
+                <h2 class="border-b-slate-200 dark:border-b-slate-700 text-slate-900 dark:text-white">RESEARCH</h2>
+                <div>
+                    <h3 class="text-xl font-semibold mb-2 text-slate-900 dark:text-white">Highlights</h3>
+                    <p class="mb-4">My research focuses on the application of deep learning in the field of crop breeding. Specifically, <strong class="font-semibold text-slate-800 dark:text-slate-200"> I am working on developing a general deep learning model that predicts genetic traits of multiple crops by analyzing both genomic data and environmental factors. </strong>The goal is to support future  <strong class="font-semibold text-slate-800 dark:text-slate-200">climate-resilient crop</strong> development by enhancing the accuracy and efficiency of trait prediction in <strong class="font-semibold text-slate-800 dark:text-slate-200">various agricultural contexts.</strong></p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-3 text-slate-900 dark:text-white">Publications</h3>
+                    <ul class="list-disc list-inside space-y-3">
+                        <p>No Publications yet</p>
+                        <!-- <li>---- [<a href="#" class="highlight-link">---</a>]</li> -->
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Featured Projects Section -->
+            <section id="projects" class="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md">
+                <h2 class="border-b-slate-200 dark:border-b-slate-700 text-slate-900 dark:text-white">FEATURED PROJECTS</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Weather App <span class="text-sm font-normal text-slate-500 dark:text-slate-400">- Django, Python</span></h3>
+                        <p class="mt-2">A simple weather application built using Django that fetches and displays real-time weather data  based on user input. Features: Search for weather information by city name, Fetch real-time weather data from an API, Display temperature, humidity, and weather conditions. [<a href="https://github.com/msahid-cse/Weather-App" class="highlight-link" target="_blank">GitHub Link</a>]</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Automatic Home Controller System <span class="text-sm font-normal text-slate-500 dark:text-slate-400">- ESP8266, Controller, IoT, Sensor, Actuators, C++, Mobile apps</span></h3>
+                        <p class="mt-2">This project is an IoT-based smart home automation system that allows users to control household appliances like lights, fans, and motors using a Wi-Fi-enabled microcontroller and a mobile app. It enables remote access, real-time control, and improved energy efficiency, making homes smarter and more convenient. </p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Path2Pro <span class="text-sm font-normal text-slate-500 dark:text-slate-400">- React, Vite, Tailwind CSS, Node.js, MongoDB, JWT-auth.</span></h3>
+                        <p class="mt-2">Path2Pro is a comprehensive educational platform designed to provide students with tools for learning, skill development, and career advancement. [<a href="https://github.com/msahid-cse/Path2Pro1.0" class="highlight-link" target="_blank">GitHub Link</a>]</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Prottay Islami Pathagar <span class="text-sm font-normal text-slate-500 dark:text-slate-400">- HTML, CSS, JS</span></h3>
+                        <p class="mt-2">Website for a non-profitable, non-political social organization aimed at promoting education and knowledge sharing and helping people. Arranging free medical camps and providing medicine, oxygen, and educational resources. [<a href="https://github.com/msahid-cse/prottay-islamic-pathagar" class="highlight-link" target="_blank">GitHub Link</a>] [<a href="https://prottoy-islami-pathagar.netlify.app/" class="highlight-link" target="_blank">Live Demo</a>]</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Political-Violence-Map-Bangladesh <span class="text-sm font-normal text-slate-500 dark:text-slate-400">- ML, Python, Flask, MERN</span></h3>
+                        <p class="mt-2">This project aims to visualize and analyze political violence in Bangladesh using machine learning techniques. News collecting from the well known news paper in Bangladesh. [<a href="https://github.com/msahid-cse/Political-Violence-Map-Bangladesh" class="highlight-link" target="_blank">GitHub Link</a>]</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Smart Toll System <span class="text-sm font-normal text-slate-500 dark:text-slate-400">- HTML, CSS, JS, PHP, MySQL</span></h3>
+                        <p class="mt-2">This is the web based Smart Toll System, for collecting toll smart way without trafic jam. [<a href="#" class="highlight-link" target="_blank">GitHub Link</a>]</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-slate-900 dark:text-white">ToolKit-for-Encryption-and-Conversion<span class="text-sm font-normal text-slate-500 dark:text-slate-400">- Java Swing, AES, DES, Base64</span></h3>
+                        <p class="mt-2">This is a toolkit for encryption and conversion tasks using Java Swing. IPv4 converter, Stuffing-Destuffing, Hamming Code, etc. [<a href="https://github.com/msahid-cse/ToolKit-for-Encryption-and-Conversion-using-Java-swing" class="highlight-link" target="_blank">GitHub Link</a>]</p>
+                    </div>
+                </div>
+            </section>
+            <!-- Certificate -->
+            <section id="projects" class="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md">
+                <h2 class="border-b-slate-200 dark:border-b-slate-700 text-slate-900 dark:text-white">CERTIFICATIONS</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Advance Python (Django) <span class="text-sm font-normal text-slate-500 dark:text-slate-400">- Basic Python, Django, Numpy, Pandas, Matplotlib</span></h3>
+                        <p class="mt-2">Completed 80-hour training on Python (Django) under EDGE Project, IIT, Jahangirnagar University (Nov 2024 – Feb 2025) [<a href="https://drive.google.com/file/d/1N5Hr9s3qk8IyfKLFeY66CIYlbrrKg8Gv/view?usp=sharing" class="highlight-link" target="_blank">Certificate</a>]</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-slate-900 dark:text-white"> Robotics Camp 2024 <span class="text-sm font-normal text-slate-500 dark:text-slate-400">- Digital Electronics, Automation, IoT, Sensor, Actuator</span></h3>
+                        <p class="mt-2">Completed Robotics Camp 2024 (Easier Stage), Covered digital electronics, automation, motor control, sensors, and IoT basics. [<a href="https://drive.google.com/file/d/1vYSqYKAyKJaS3sCAsfwDedzMj5GJPYfp/view?usp=sharing" class="highlight-link" target="_blank">Certificate</a>]</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Green Start-Ups <span class="text-sm font-normal text-slate-500 dark:text-slate-400">- Sustainability, Green Technology, Innovation, Eco-friendly, Ethical Business</span></h3>
+                        <p class="mt-2">Successfully completed the "Green Start-Ups" course as part of the Green Skills for SDGs program by Futurenation and UNDP Bangladesh. [<a href="https://drive.google.com/file/d/1tjbf06rEHKzAS1zQKU-bNxdhINburZ6P/view?usp=sharing" class="highlight-link" target="_blank">Certificate</a>]</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- LEADERSHIP & VOLUNTEERING -->
+            <section id="talks" class="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md">
+                <h2 class="border-b-slate-200 dark:border-b-slate-700 text-slate-900 dark:text-white">LEADERSHIP & VOLUNTEERING</h2>
+                <div>
+                    <h3 class="text-xl font-semibold text-slate-900 dark:text-white">BASIS Student Forum GUB Chapter</h3>
+                    <p class="mt-2"><strong class="font-semibold text-slate-800 dark:text-slate-200">-Organizing Secretary, </strong> 2025-2026 executive committee, BSF GUB</p>
+                </div>
+                <br>
+                <div>
+                    <h3 class="text-xl font-semibold text-slate-900 dark:text-white">40th National Science and Technology Week, Science Fair-2019</h3>
+                    <p class="mt-2"><strong class="font-semibold text-slate-800 dark:text-slate-200">-Team Leader</strong>, Project innovation and showcasing.</p>
+                </div>
+                <br>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-slate-900 dark:text-white">GUB CSE Carnival 2024</h3>
+                    <p class="mt-2"><strong class="font-semibold text-slate-800 dark:text-slate-200">-Lead Member,</strong> Sponsorship Management core committee.</p>
+                </div>
+                <br>
+                <div>
+                    <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Faridgonj Govt. College Blood Donation Club,  Faridgonj,  Chandpur</h3>
+                    <p class="mt-2"><strong class="font-semibold text-slate-800 dark:text-slate-200">-Founding Member</strong> and <strong class="font-semibold text-slate-800 dark:text-slate-200">Admin</strong> of online platform Management team.</p>
+                </div>
+                <br>
+                <div>
+                    <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Free Medical Camp, Chandpur</h3>
+                    <p class="mt-2"><strong class="font-semibold text-slate-800 dark:text-slate-200">-Head Organizer</strong>, Prottoy Islami Pathagar.</p>
+                </div>
+                <br>
+                <div>
+                    <h3 class="text-xl font-semibold text-slate-900 dark:text-white">As-Sunnah Foundation</h3>
+                    <p class="mt-2"><strong class="font-semibold text-slate-800 dark:text-slate-200">-Campus Volunteer, </strong>at Green University of Bangladesh</p>
+                </div>
+                <br>
+                <div>
+                    <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Flood’24</h3>
+                    <p class="mt-2"><strong class="font-semibold text-slate-800 dark:text-slate-200">-Rescue and Relief Team</strong>, Flood Rescue and Relief Operations, Faridganj.</p>
+                </div>
+                <br>
+                <div>
+                    <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Free Oxygen Service 24/7</h3>
+                    <p class="mt-2"><strong class="font-semibold text-slate-800 dark:text-slate-200">-Team Leader, </strong> Free Oxygen Service 24/7 in COVID-19 Pandemic Time, Faridganj.</p>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md text-center">
+                 <h2 class="border-b-slate-200 dark:border-b-slate-700 text-slate-900 dark:text-white">CONTACT</h2>
+                 <p>I'm always open to discussing new projects, research ideas, or collaboration opportunities. Please feel free to reach out by completing the <a href="https://forms.gle/dxTiogNHZMWFYQqY7" class="highlight-link">contact form</a>, and I'll get back to you as soon as possible.</p>
+            </section>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center text-sm text-slate-500 dark:text-slate-400 mt-12 py-6 border-t border-slate-200 dark:border-slate-700">
+            <p>Last Updated on: 07/23/2025
+            </p>
+            <p id="current-time"></p>
+            <p>&copy; <span id="current-year"></span> Md. Sahid. All Rights Reserved.</p>
+        </footer>
+ 
+    </main>
+
+    <!-- JavaScript for dynamic functionality -->
+    <script>
+        // --- Theme Toggler ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+        // Function to set the theme and icon visibility
+        function setTheme(isDark) {
+            if (isDark) {
+                document.documentElement.classList.add('dark');
+                themeToggleLightIcon.classList.remove('hidden');
+                themeToggleDarkIcon.classList.add('hidden');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                themeToggleLightIcon.classList.add('hidden');
+                themeToggleDarkIcon.classList.remove('hidden');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Set initial icon state based on current theme
+        if (document.documentElement.classList.contains('dark')) {
+            themeToggleLightIcon.classList.remove('hidden');
+            themeToggleDarkIcon.classList.add('hidden');
+        } else {
+            themeToggleLightIcon.classList.add('hidden');
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+
+        // Add click listener to toggle the theme
+        themeToggleBtn.addEventListener('click', function() {
+            setTheme(!document.documentElement.classList.contains('dark'));
+        });
+
+
+        // --- Footer Date/Time ---
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        function updateTime() {
+            const now = new Date();
+            const formattedTime = now.toLocaleString('en-US', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            }).replace(',', '');
+            document.getElementById('current-time').textContent = `Current Date and Time: ${formattedTime}`;
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+
+</body>
+</html>
