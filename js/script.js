@@ -5,6 +5,41 @@ function initializeTheme() {
     } else {
         document.documentElement.classList.remove('dark');
     }
+
+    // wire up both theme buttons if present + update icons
+    function toggleTheme() {
+        if (document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.remove('dark');
+            localStorage.theme = 'light';
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.theme = 'dark';
+        }
+        updateIcons();
+    }
+
+    const topThemeBtn = document.getElementById('theme-toggle');
+    const sideThemeBtn = document.getElementById('theme-toggle-sidebar');
+    const topMoon = document.getElementById('theme-toggle-dark-icon');
+    const topSun = document.getElementById('theme-toggle-light-icon');
+    const sideMoon = document.getElementById('sidebar-moon');
+    const sideSun = document.getElementById('sidebar-sun');
+
+    function updateIcons() {
+        const isDark = document.documentElement.classList.contains('dark');
+        if (topMoon && topSun) {
+            // moon when light, sun when dark
+            topMoon.classList.toggle('hidden', isDark);
+            topSun.classList.toggle('hidden', !isDark);
+        }
+        if (sideMoon && sideSun) {
+            sideMoon.classList.toggle('hidden', isDark);
+            sideSun.classList.toggle('hidden', !isDark);
+        }
+    }
+    if (topThemeBtn) topThemeBtn.onclick = toggleTheme;
+    if (sideThemeBtn) sideThemeBtn.onclick = toggleTheme;
+    updateIcons();
 }
 
 // View More Projects functionality
